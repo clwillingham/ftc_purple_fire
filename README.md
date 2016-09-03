@@ -1,3 +1,18 @@
+#About this repository
+
+This is a version of the official FTC code without the previous history or the pdf documentation. The advantage to this approach is that it brings the repository size from 200mb down to 2.7mb (1.34mb download size). The disadvantage is that there is no guarantee that the repository will be at the latest version, I will do my best to keep it up to date, but its not completely automated, you might be responsible for updating it yourself (see below).
+
+**The current version of the app in this repository is 16.07.08**
+
+
+##updating repository
+
+To keep the repository up to date I created a bash script (update_ftc_app.sh) that automatically clones the official repository and copies the code into the repository, leaving the pdf documentation out. I will try to keep the repository up to date with the official repository meaning all you have to do is a run `git pull` every now and then to update your code, but if I ever miss an update, please feel free to run the script and send a pull request. 
+But please be aware that the script will overwrite the FTCOpModeRegister and any other customization's to the code you have made, So if your updating the repository with the script i'd recommend cloning a clean version of the repository then running the script and sending the pull request.
+
+
+# official documentation below
+
 # ftc_app
 FTC Android Studio project to create FTC Robot Controller app.
 
