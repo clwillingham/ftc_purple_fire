@@ -1,18 +1,3 @@
-#About this repository
-
-This is a version of the official FTC code without the previous history or the pdf documentation. The advantage to this approach is that it brings the repository size from 200mb down to 2.7mb (1.34mb download size). The disadvantage is that there is no guarantee that the repository will be at the latest version, I will do my best to keep it up to date, but its not completely automated, you might be responsible for updating it yourself (see below).
-
-**The current version of the app in this repository is 16.07.08**
-
-
-##updating repository
-
-To keep the repository up to date I created a bash script (update_ftc_app.sh) that automatically clones the official repository and copies the code into the repository, leaving the pdf documentation out. I will try to keep the repository up to date with the official repository meaning all you have to do is a run `git pull` every now and then to update your code, but if I ever miss an update, please feel free to run the script and send a pull request. 
-But please be aware that the script will overwrite the FTCOpModeRegister and any other customization's to the code you have made, So if your updating the repository with the script i'd recommend cloning a clean version of the repository then running the script and sending the pull request.
-
-
-# official documentation below
-
 # ftc_app
 FTC Android Studio project to create FTC Robot Controller app.
 
@@ -32,6 +17,74 @@ Documentation for the FTC SDK are included with this repository.  There is a sub
 For technical questions regarding the SDK, please visit the FTC Technology forum:
 
   http://ftcforum.usfirst.org/forumdisplay.php?156-FTC-Technology
+
+**************************************************************************************
+
+Version 2.20 (released on 16.09.08)
+  * Support for Modern Robotics Compass Sensor.
+  * Support for Modern Robotics Range Sensor.
+  * Revise device names for Pushbot templates to match the names used in Pushbot guide.
+  * Fixed bug so that IrSeekerSensorV3 device is accessible as IrSeekerSensor in hardwareMap.
+  * Modified computer vision code to require an individual Vuforia license (per legal requirement from PTC).
+  * Minor fixes.
+  * Blockly enhancements:
+     - Support for Voltage Sensor.
+     - Support for Analog Input.
+     - Support for Analog Output.
+     - Support for Light Sensor.
+     - Support for Servo Controller.
+
+**************************************************************************************
+
+Version 2.10 (released on 16.09.03)
+ * Support for Adafruit IMU.
+ * Improvements to ModernRoboticsI2cGyro class
+    - Block on reset of z axis.
+    - isCalibrating() returns true while gyro is calibration.
+ * Updated sample gyro program.
+ * Blockly enhancements
+    - support for android.graphics.Color.
+    - added support for ElapsedTime.
+    - improved look and legibility of blocks.
+    - support for compass sensor.
+    - support for ultrasonic sensor.
+    - support for IrSeeker.
+    - support for LED.
+    - support for color sensor.
+    - support for CRServo
+    - prompt user to configure robot before using programming mode.
+ * Provides ability to disable audio cues.
+ * various bug fixes and improvements.
+
+**************************************************************************************
+
+Version 2.00 (released on 16.08.19)
+ * This is the new release for the upcoming 2016-2017 FIRST Tech Challenge Season.
+ * Channel change is enabled in the FTC Robot Controller app for Moto G 2nd and 3rd Gen phones.
+ * Users can now use annotations to register/disable their Op Modes.
+ * Changes in the Android SDK, JDK and build tool requirements (minsdk=19, java 1.7, build tools 23.0.3).
+ * Standardized units in analog input.
+ * Cleaned up code for existing analog sensor classes.
+ * setChannelMode and getChannelMode were REMOVED from the DcMotorController class.  This is important - we no longer set the motor modes through the motor controller.
+ * setMode and getMode were added to the DcMotor class.  
+ * ContinuousRotationServo class has been added to the FTC SDK.
+ * Range.clip() method has been overloaded so it can support this operation for int, short and byte integers.
+ * Some changes have been made (new methods added) on how a user can access items from the hardware map.
+ * Users can now set the zero power behavior for a DC motor so that the motor will brake or float when power is zero.
+ * Prototype Blockly Programming Mode has been added to FTC Robot Controller.  Users can place the Robot Controller into this mode, and then use a device (such as a laptop) that has a Javascript enabled browser to write Blockly-based Op Modes directly onto the Robot Controller.
+ * Users can now configure the robot remotely through the FTC Driver Station app.
+ * Android Studio project supports Android Studio 2.1.x and compile SDK Version 23 (Marshmallow).
+ * Vuforia Computer Vision SDK integrated into FTC SDK.  Users can use sample vision targets to get localization information on a standard FTC field.
+ * Project structure has been reorganized so that there is now a TeamCode package that users can use to place their local/custom Op Modes into this package.
+ * Inspection function has been integrated into the FTC Robot Controller and Driver Station Apps (Thanks Team HazMat… 9277 & 10650!).
+ * Audio cues have been incorporated into FTC SDK.
+ * Swap mechanism added to FTC Robot Controller configuration activity.  For example, if you have two motor controllers on a robot, and you misidentified them in your configuration file, you can use the Swap button to swap the devices within the configuration file (so you do not have to manually re-enter in the configuration info for the two devices).
+ * Fix mechanism added to all user to replace an electronic module easily.  For example, suppose a servo controller dies on your robot. You replace the broken module with a new module, which has a different serial number from the original servo controller.  You can use the Fix button to automatically reconfigure your configuration file to use the serial number of the new module.
+ * Improvements made to fix resiliency and responsiveness of the system.
+ * For LinearOpMode the user now must for a telemetry.update() to update the telemetry data on the driver station.  This update() mechanism ensures that the driver station gets the updated data properly and at the same time.
+ * The Auto Configure function of the Robot Controller is now template based.  If there is a commonly used robot configuration, a template can be created so that the Auto Configure mechanism can be used to quickly configure a robot of this type.
+ * The logic to detect a runaway op mode (both in the LinearOpMode and OpMode types) and to abort the run, then auto recover has been improved/implemented.
+ * Fix has been incorporated so that Logitech F310 gamepad mappings will be correct for Marshmallow users.
 
 **************************************************************************************
 
