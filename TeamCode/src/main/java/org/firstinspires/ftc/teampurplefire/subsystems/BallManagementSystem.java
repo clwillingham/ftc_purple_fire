@@ -34,6 +34,8 @@ public class BallManagementSystem {
         intake = hardwareMap.dcMotor.get("intake");
         shooter1 = hardwareMap.dcMotor.get("shooter1");
         shooter2 = hardwareMap.dcMotor.get("shooter2");
+        shooter1.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+        shooter2.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
         this.telemetry = telemetry;
 //        shooterDoor = hardwareMap.servo.get("door");
 
