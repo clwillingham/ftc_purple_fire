@@ -19,7 +19,7 @@ public class TeleOpMode extends OpMode {
     @Override
     public void init() {
         drivetrain = new Drivetrain(hardwareMap);
-//        bms = new BallManagementSystem(hardwareMap, telemetry);
+        bms = new BallManagementSystem(hardwareMap, telemetry);
     }
 
     @Override
