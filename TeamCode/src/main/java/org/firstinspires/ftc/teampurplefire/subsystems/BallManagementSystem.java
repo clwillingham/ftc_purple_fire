@@ -13,17 +13,17 @@ import java.util.Timer;
  * This subsystem controls both the intake and the shooter
  */
 public class BallManagementSystem {
-    public static final double KI = 0.02;
-    public static final double OPEN_STATE = 0.25;
-    public static final double CLOSE_STATE = 0.25;
-    public static final double SHOOTER_LOW_SPEED = 0.35;
-    public static final double SHOOTER_MED_SPEED = 0.65;
+    public static final double KI1 = 0.02;
+    public static final double KI2 = 0.01;
+//    public static final double OPEN_STATE = 0.25;
+//    public static final double CLOSE_STATE = 0.25;
+    public static final double SHOOTER_LOW_SPEED = 0.30;
+    public static final double SHOOTER_MED_SPEED = 0.60;
     public static final double SHOOTER_HIGH_SPEED= 1;
     public DcMotor intake;
     boolean shooterActive;
     DcMotor shooter1;
     DcMotor shooter2;
-    Timer timer;
 //    Servo shooterDoor;
     double shooterTarget = 1;
     Telemetry telemetry;
@@ -45,17 +45,16 @@ public class BallManagementSystem {
      * This method manages
      */
     public void update(){
-        //power += shooterActive? KI : -KI;
 
         if(System.currentTimeMillis() - lastRun > 50) {
             double power = shooter1.getPower();
             lastRun = System.currentTimeMillis();
             if(shooterActive && power < shooterTarget){
-                power += KI;
+                power += KI1;
             }else if(!shooterActive){
-                power -= KI;
+                power -= KI2;
             }
-            if (power > shooterTarget) {
+            if (power >= shooterTarget) {
                 power = shooterTarget;
             } else if (power < 0) {
                 power = 0;

@@ -19,20 +19,31 @@ public class TeleOpMode extends OpMode {
     @Override
     public void init() {
         drivetrain = new Drivetrain(hardwareMap);
-//        bms = new BallManagementSystem(hardwareMap, telemetry);
+        bms = new BallManagementSystem(hardwareMap, telemetry);
     }
 
     @Override
     public void loop() {
         drivetrain.drive(gamepad1.left_stick_y, gamepad1.right_stick_y);
         bms.update();
-        bms.setShooterActive(gamepad1.right_bumper);
-        if(gamepad1.x){
-            bms.setShooterTarget(BallManagementSystem.SHOOTER_LOW_SPEED);
-        }else if(gamepad1.y){
-            bms.setShooterTarget(BallManagementSystem.SHOOTER_MED_SPEED);
-        }else if(gamepad1.b){
-            bms.setShooterTarget(BallManagementSystem.SHOOTER_HIGH_SPEED);
+
+        if((gamepad1.right_trigger>0.1)&&(gamepad1.right_trigger<0.75)){
+            if(bms.getShooterTarget()!=BallManagementSystem.SHOOTER_LOW_SPEED){
+                bms.setShooterTarget(BallManagementSystem.SHOOTER_LOW_SPEED);
+            }
+            bms.setShooterActive(true);
+
+        }
+        else if(gamepad1.right_trigger>=0.75){
+            if(bms.getShooterTarget()!=BallManagementSystem.SHOOTER_MED_SPEED){
+                bms.setShooterTarget(BallManagementSystem.SHOOTER_MED_SPEED);
+            }
+            bms.setShooterActive(true);
+
+        }
+        else{
+            bms.setShooterActive(false);
+
         }
         //Original design was going to have a servo door for holding balls until they where ready to be released
 //        if(gamepad1.a){
@@ -41,7 +52,7 @@ public class TeleOpMode extends OpMode {
 //            bms.closeDoor();
 //        }
 
-        if(gamepad1.left_bumper) {
+        if(gamepad1.left_trigger>=0.1) {
             bms.intake.setPower(1);
         }else{
             bms.intake.setPower(0);
