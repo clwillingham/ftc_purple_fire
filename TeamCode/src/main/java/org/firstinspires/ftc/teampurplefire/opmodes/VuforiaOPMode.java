@@ -18,7 +18,8 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
 public class VuforiaOPMode extends LinearOpMode {
 
     @Override
-    public void runOpMode() throws InterruptedException{
+    public
+    void runOpMode() throws InterruptedException{
         VuforiaLocalizer.Parameters params = new VuforiaLocalizer.Parameters(R.id.cameraMonitorViewId);
         params.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;
         params.vuforiaLicenseKey = "ATIv+Pr/////AAAAGRbSNomRsUOwjl5ps1NItDFY7QxXxyKNhDjmtAj4Nj72eHYDJAwL+FXAMsdmengTAQndU8WfFLAmEa/Rbs3hQ/3up1Bu20JrhkFBEPbWqIz4M/P8S8rF2An6S7xXPItEyFGYvKST61q3QI9tk63BOGuYVAE8GHk8Ik5rXW1I1WrBRvmZuaZYpAPUXPh8wbGJTGXUPXX1VcJw/eAK9rACq27zpxavTw+/9J+qlBopbPBPu1pd56/GKvi48fThEgeLWdoMGdNna6UpikqujVrvA9Pp5P20q/6JGoQrCS8heRwEyIBdNJ9O5Wf9P+8EdZhsWNKwbOlNdt3voM6/0FeFehBzVP0J9PgIPJ3SNKjZ4yd/";
