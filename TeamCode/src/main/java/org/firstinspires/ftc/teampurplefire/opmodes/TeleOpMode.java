@@ -25,6 +25,7 @@ public class TeleOpMode extends OpMode {
     @Override
     public void loop() {
         drivetrain.drive(gamepad1.left_stick_y, gamepad1.right_stick_y);
+
         bms.update();
 
         if((gamepad1.right_trigger>0.1)&&(gamepad1.right_trigger<0.75)){
@@ -45,17 +46,19 @@ public class TeleOpMode extends OpMode {
             bms.setShooterActive(false);
 
         }
-        //Original design was going to have a servo door for holding balls until they where ready to be released
-//        if(gamepad1.a){
-//            bms.openDoor();
-//        }else{
-//            bms.closeDoor();
-//        }
 
-        if(gamepad1.left_trigger>=0.1) {
+        if((gamepad1.left_trigger>0.1)&&(gamepad1.left_trigger<0.75)){
+            bms.intake.setPower(0.5);
+        }
+        else if(gamepad1.left_trigger>=0.75){
             bms.intake.setPower(1);
-        }else{
+        }
+        else if(gamepad1.left_bumper){
+            bms.intake.setPower(-1);
+        }
+        else{
             bms.intake.setPower(0);
+
         }
     }
 }

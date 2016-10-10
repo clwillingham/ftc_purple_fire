@@ -17,8 +17,8 @@ public class BallManagementSystem {
     public static final double KI2 = 0.01;
 //    public static final double OPEN_STATE = 0.25;
 //    public static final double CLOSE_STATE = 0.25;
-    public static final double SHOOTER_LOW_SPEED = 0.30;
-    public static final double SHOOTER_MED_SPEED = 0.60;
+    public static final double SHOOTER_LOW_SPEED = 0.40;
+    public static final double SHOOTER_MED_SPEED = 0.75;
     public static final double SHOOTER_HIGH_SPEED= 1;
     public DcMotor intake;
     boolean shooterActive;
